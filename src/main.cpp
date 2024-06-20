@@ -38,8 +38,10 @@ ccColor3B COLORS[] = {
 };
 
 class $modify(HookedPlayerObject, PlayerObject) {
-    float tpColorDelta = 0.f;
-    size_t curIdx = 0;
+	struct Fields {
+    		float tpColorDelta = 0.f;
+    		size_t curIdx = 0;
+	};
 
 	bool init(int p0, int p1, GJBaseGameLayer* p2, cocos2d::CCLayer* p3, bool p4) {
 		if (!PlayerObject::init(p0, p1, p2, p3, p4)) return false;
@@ -65,17 +67,17 @@ class $modify(HookedPlayerObject, PlayerObject) {
         }
 
         auto col = ccc4FFromccc3B(newColor);
-		forceColor(m_unk6dc, col);
+		forceColor(m_playerGroundParticles, col);
 		forceColor(m_trailingParticles, col);
 		forceColor(m_shipClickParticles, col);
-		forceColor(m_unk6e8, col);
+		forceColor(m_vehicleGroundParticles, col);
 		forceColor(m_ufoClickParticles, col);
 		forceColor(m_robotBurstParticles, col);
-		forceColor(m_unk6f4, col);
+		forceColor(m_dashParticles, col);
 		forceColor(m_swingBurstParticles1, col);
 		forceColor(m_swingBurstParticles2, col);
-		forceColor(m_unk704, col);
-		forceColor(m_unk708, col);
+		forceColor(m_landParticles0, col);
+		forceColor(m_landParticles1, col);
     }
 
     void updateGlowColor() {
